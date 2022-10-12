@@ -4,13 +4,13 @@ import { BsHouseFill, BsHandbagFill, BsCartFill, BsHeartFill, BsPersonFill } fro
 
 import { Nav } from "./styles"
 
-export default function Navbar() {
+export default function Navbar({ home, myOrder, cart, favorites, profile }) {
     return (
         <Nav>
             <ul>
                 <li>
                     <Link href="/">
-                        <a className="active">
+                        <a className={home}>
                             <BsHouseFill />
                             <span>Inicio</span>
                         </a>
@@ -18,7 +18,7 @@ export default function Navbar() {
                 </li>
                 <li>
                     <Link href="/myOrder">
-                        <a>
+                        <a className={myOrder}>
                             <BsHandbagFill />
                             <span>Compras</span>
                         </a>
@@ -26,7 +26,7 @@ export default function Navbar() {
                 </li>
                 <li>
                     <Link href="/cart">
-                        <a>
+                        <a className={cart}>
                             <BsCartFill />
                             <span>Carrinho</span>
                         </a>
@@ -34,7 +34,7 @@ export default function Navbar() {
                 </li>
                 <li>
                     <Link href="/favorites">
-                        <a>
+                        <a className={favorites}>
                             <BsHeartFill />
                             <span>Favoritos</span>
                         </a>
@@ -42,7 +42,7 @@ export default function Navbar() {
                 </li>
                 <li>
                     <Link href="/profile">
-                        <a>
+                        <a className={profile}>
                             <BsPersonFill />
                             <span>Perfil</span>
                         </a>

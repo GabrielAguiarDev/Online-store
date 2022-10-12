@@ -5,6 +5,7 @@ export const Nav = styled.nav`
     bottom: 20px;
     width: 100%;
     height: 4rem;
+    z-index: 1;
     
     ul {
         display: flex;

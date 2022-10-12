@@ -1,10 +1,17 @@
-import Head from 'next/head'
-import Image from 'next/image'
+import Head from 'next/head';
+import Image from 'next/image';
+
+import { Navbar, Carrosel, Categories, Suggested, Promotion, Featured } from "../components";
 
 export default function Home() {
   return (
     <>
-      <h1>Loja Online</h1>
+      <Navbar home="active"/>
+      <Carrosel />
+      <Categories />
+      <Suggested />
+      <Promotion />
+      <Featured />
     </>
   )
 }
