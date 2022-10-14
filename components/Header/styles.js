@@ -7,6 +7,15 @@ export const Header = styled.header`
     height: 65px;
     background-color: var(--nav);
 
+    .back {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 52px;
+        padding: 9px;
+        color: var(--color1);
+    }
+
     .logo a {
         margin-left: 1rem;
         font-size: 23px;
@@ -24,7 +33,7 @@ export const Header = styled.header`
         gap: 10px;
     }
 
-    .nav a {
+    .nav .notification {
         position: relative;
         display: flex;
         justify-content: center;
@@ -49,75 +58,14 @@ export const Header = styled.header`
             color: var(--color3);
         }
     }
-
-    button {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 45px;
-        background-color: var(--color1);
-        border-radius: 10px 0px 0px 10px;
-
-        &:hover {
-            background-color: var(--color3);
-        }
-    }
-
-    button svg {
-        font-size: 35px;
-        color: var(--text);
-    }
 `;
 
-export const Search = styled.div`
-    position: relative;
+export const HeaderSecondary = styled.header`
     display: flex;
-    width: 185px;
-    justify-content: right;
+    justify-content: space-between;
     align-items: center;
-
-    input {
-        display: ${props => (props.display ? "block" : "none")};
-        position: absolute;
-        width: 100%;
-        height: 40px;
-        outline: none;
-        border-radius: 20px;
-        background-color: var(--body);
-        color: var(--text);
-        font-size: 20px;
-        padding: 0px 15px;
-        z-index: ${props => (props.display ? "2" : "-1")}
-    }
-
-    svg {
-        display: ${props => (props.display ? "none" : "flex")};
-        justify-content: center;
-        align-items: center;
-        color: var(--color1);
-        font-size: 25px;
-    }
-`;
-
-export const Menu = styled.div`
-    position: fixed;
-    right: ${props => (props.visible ? "0" : "-65vw")};
-    top: 0;
-    bottom: 0;
-    height: 100vh;
-    width: 65vw;
+    height: 65px;
     background-color: var(--nav);
-    z-index: 3;
-    box-shadow: -10px 0px 21px #00000021;
-    transition: all ease 0.3s;
-`;
 
-export const Overlay = styled.div`
-    display: ${props => (props.zIndex ? "block" : "none")};
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: ${props => (props.zIndex ? "2" : "-1")};
+    
 `;

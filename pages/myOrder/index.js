@@ -1,10 +1,9 @@
-import Navbar from "../../components/Navbar";
+import { Layout } from "../../components";
 
 export default function MyOrder() {
     return (
-        <>
-            <Navbar myOrder="active" />
+        <Layout titlePage="Pedidos" search notification menu navbar myOrder="active" >
             <h1>Minhas Compras</h1>
-        </>
+        </Layout>
     )
 }
