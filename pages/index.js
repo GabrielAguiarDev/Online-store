@@ -2,7 +2,7 @@ import { Layout, Carrosel, Categories, Suggested, Promotion, Featured } from "..
 
 export default function Home() {
   return (
-      <Layout titlePage="home" search menu notification navbar home="active">
+      <Layout titlePage="Inicio" search menu notification navbar home="active">
         <Carrosel />
         <Categories />
         <Suggested />

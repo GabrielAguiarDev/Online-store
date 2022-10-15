@@ -9,5 +9,6 @@ import Featured from "./Featured";
 import Search from "./Search";
 import Menu from "./Menu";
 import Overlay from "./Overlay";
+import Language from "./Language";
 
-export { Layout, Header, Navbar, Carrosel, Categories, Suggested, Promotion, Featured, Search, Menu, Overlay };
+export { Layout, Header, Navbar, Carrosel, Categories, Suggested, Promotion, Featured, Search, Menu, Overlay, Language };
