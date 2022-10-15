@@ -15,3 +15,7 @@ export const Card = styled.div`
         transform: rotate(-45deg);
     }
 `;
+
+export const CardRequest = styled.div`
+
+`;

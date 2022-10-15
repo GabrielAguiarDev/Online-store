@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
+import { setCookie } from "nookies";
 
 import { Language, Layout, Overlay } from "../../components";
 
@@ -17,6 +18,10 @@ export default function indexSettings() {
 
     const handleThemes = () => {
         setLightTheme(!lightTheme);
+        setCookie(null, "USER_THEME", "light", {
+            maxAge: 87400 * 7,
+            path: "/",
+        })
     }
 
     const handleCheckboxEmail = () => {
@@ -31,6 +36,18 @@ export default function indexSettings() {
         setShowLanguage(!showLanguage)
     }
 
+    if (lightTheme === true) {
+        setCookie(null, "USER_THEME", "light", {
+            maxAge: 87400 * 7,
+            path: "/",
+        })
+    } else {
+        setCookie(null, "USER_THEME", "dark", {
+            maxAge: 87400 * 7,
+            path: "/",
+        })
+    }
+    
     return (
         <Layout titlePage="Configurações" back menu >
             <Overlay zIndex={showLanguage} onClick={handleLanguage} />

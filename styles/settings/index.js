@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 export const Settings = styled.div`
+    position: relative;
+    margin-top: 2rem;
+
     h1 {
         font-size: 23px;
         margin: 2rem 1rem;

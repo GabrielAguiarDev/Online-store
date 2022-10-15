@@ -6,12 +6,12 @@ import { Menu, Search } from "../../components";
 
 import { Header } from "./styles";
 
-export default function indexHeader({ search, menu, back, notification }) {
+export default function indexHeader({ search, menu, back, backUrl, notification }) {
   return (
     <>
       <Header>
         {back ? (
-          <Link href="/">
+          <Link href={backUrl ? backUrl : "/"}>
             <a className="back">
               <MdKeyboardArrowLeft />
             </a>

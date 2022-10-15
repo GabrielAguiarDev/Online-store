@@ -2,11 +2,12 @@ import styled from "styled-components";
 
 export const Language = styled.div`
     position: absolute;
-    bottom: ${props => (props.show ? "0px" : "-60vh")};
-    width: 100%;
-    height: 60vh;
+    top: 0;
+    left: ${props => (props.show ? "0px" : "-65vh")};
+    width: 65vw;
+    height: 100vh;
     background-color: var(--nav);
-    border-radius: 30px 30px 0 0;
+    border-radius: 0 30px 0 0;
     transition: all ease 0.3s;
     z-index: 3;
 
@@ -47,7 +48,7 @@ export const Language = styled.div`
     }
 
     ul li .nameCountry span {
-        font-size: 20px;
+        font-size: 18px;
         font-weight: bold;
     }
 

@@ -10,5 +10,6 @@ import Search from "./Search";
 import Menu from "./Menu";
 import Overlay from "./Overlay";
 import Language from "./Language";
+import RequestItem from "./CardItem/request";
 
-export { Layout, Header, Navbar, Carrosel, Categories, Suggested, Promotion, Featured, Search, Menu, Overlay, Language };
+export { Layout, Header, Navbar, Carrosel, Categories, Suggested, Promotion, Featured, Search, Menu, Overlay, Language, RequestItem };
