@@ -11,5 +11,6 @@ import Menu from "./Menu";
 import Overlay from "./Overlay";
 import Language from "./Language";
 import RequestItem from "./CardItem/request";
+import CartItem from "./CardItem/cart";
 
-export { Layout, Header, Navbar, Carrosel, Categories, Suggested, Promotion, Featured, Search, Menu, Overlay, Language, RequestItem };
+export { Layout, Header, Navbar, Carrosel, Categories, Suggested, Promotion, Featured, Search, Menu, Overlay, Language, RequestItem, CartItem };

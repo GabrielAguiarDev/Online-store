@@ -6,7 +6,7 @@ import { Search } from "./styles";
 
 import { ImSearch } from "react-icons/im";
 
-export default function indexSearch() {
+export default function indexSearch({ margin }) {
 
     const searchInput = useRef(null);
     const [toggle, setToggle] = useState(null);
@@ -38,7 +38,7 @@ export default function indexSearch() {
     return (
         <>
             <Overlay zIndex={toggle} background="transparent" onClick={clickToClose} />
-            <Search display={toggle}>
+            <Search display={toggle} margin={margin}>
                 <input type="text" autoFocus ref={searchInput} placeholder="Buscar" onKeyUp={handleKeyUp} onChange={e => setSearch(e.target.value)} value={search} />
                 <ImSearch onClick={handleToggle} />
             </Search>

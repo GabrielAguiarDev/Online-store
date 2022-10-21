@@ -6,6 +6,7 @@ export const Search = styled.div`
     width: 185px;
     justify-content: right;
     align-items: center;
+    margin: ${props => (props.margin ? props.margin : "")};
 
     input {
         display: ${props => (props.display ? "block" : "none")};

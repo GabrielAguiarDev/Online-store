@@ -6,10 +6,10 @@ import { Menu, Search } from "../../components";
 
 import { Header } from "./styles";
 
-export default function indexHeader({ search, menu, back, backUrl, notification }) {
+export default function indexHeader({ search, searchMargin, menu, back, backUrl, notification }) {
   return (
     <>
-      <Header>
+      <Header back={back} >
         {back ? (
           <Link href={backUrl ? backUrl : "/"}>
             <a className="back">
@@ -24,7 +24,7 @@ export default function indexHeader({ search, menu, back, backUrl, notification 
           </div>
         )}
         <div className="nav">
-          {search && <Search />}
+          {search && <Search margin={searchMargin} />}
           {notification && <Link href="/notification">
             <a className="notification">
               <MdNotifications />

@@ -11,9 +11,11 @@ export const Header = styled.header`
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 52px;
-        padding: 9px;
-        color: var(--color1);
+        font-size: 45px;
+        padding: 1px;
+        border-radius: 0 10px 10px 0;
+        color: ${props => (props.back === "color" ? "var(--text)" : "var(--color1)")};
+        background-color: ${props => (props.back === "color" ? "var(--color1)" : "transparent")};
     }
 
     .logo a {
