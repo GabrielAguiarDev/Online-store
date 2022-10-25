@@ -83,6 +83,7 @@ export const Cart = styled.section`
         color: var(--color4);
         border-radius: 50%;
         font-size: 26px;
+        opacity: 0.8;
     }
 
     .infoCoupon p {

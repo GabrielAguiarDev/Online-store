@@ -1,39 +1,19 @@
 import Link from "next/link";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 import { Layout, CartItem } from "../../components";
 import { Cart } from "../../styles/cart";
 import { BsX } from "react-icons/bs";
 
 export default function indexCart() {
-
-    const products = [
-        {
-            value: "250,00",
-            amount: "1" 
-        },
-        {
-            value: "20,00",
-            amount: "3" 
-        },
-        {
-            value: "50,00",
-            amount: "2" 
-        },
-        {
-            value: "150,00",
-            amount: "1" 
-        },
-        {
-            value: "330,50",
-            amount: "1" 
-        },
-        {
-            value: "190,30",
-            amount: "1" 
-        },
-    ]
-
+    const [allProducts, setAllProducts] = useState([
+        { id: 1, name: "Nome do produto", price: 250, amount: 1, total: 0},
+        { id: 2, name: "Nome do produto", price: 20, amount: 3, total: 0},
+        { id: 3, name: "Nome do produto", price: 50, amount: 2, total: 0},
+        { id: 4, name: "Nome do produto", price: 150, amount: 1, total: 0},
+        { id: 5, name: "Nome do produto", price: 330.50, previous: 399.99, amount: 1, total: 0},
+        { id: 6, name: "Nome do produto", price: 190.30, amount: 1, total: 0},
+    ])
     const [subTotal, setSubTotal] = useState(null)
     const [total, setTotal] = useState(null)
     const [descCoupon, setDescCoupon] = useState(null)
@@ -46,20 +26,40 @@ export default function indexCart() {
     };
     
     const formatBRL = (value) => {
+        if (value === undefined) return
         return value.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})
     }
 
+    const changeAmount = useCallback(
+        (id, add) => {
+            const newState = [...allProducts];
+            const item = newState.find((product) => product.id === id);
+            if (add) {
+                item.amount += 1
+            } else {
+                if (item.amount > 0) {
+                    item.amount -= 1
+                }
+            }
+            item.total = item.amount * item.price
+            setAllProducts(newState);
+        },
+        [allProducts]
+    );
+
     const applyCoupon = () => {
         if (inputCoupon === coupon.key) {
-            let discount = (coupon.percentage * subTotal) / 100
-            let newValueTotal = (subTotal - discount)
+            let sub = allProducts.reduce((subTotal, product) => (subTotal += product.price * product.amount), 0)
+            console.log(sub)
+            let discount = (coupon.percentage * sub) / 100
+            let newValueTotal = (sub - discount)
             setTotal(newValueTotal)
             setDescCoupon(discount)
             setInputCoupon("")
             setClassError("")
         } else {
             setInputCoupon("")
-            setTotal(subTotal)
+            setTotal(null)
             setDescCoupon(null)
             setClassError("error")
             setMsgError("Cupom inválido!")
@@ -67,33 +67,37 @@ export default function indexCart() {
     }
 
     const removeCoupon = () => {
-        setTotal(subTotal)
+        setTotal(null)
         setDescCoupon(null)
     }
-
-    const calculateValueAllProducts = () => {
-        let sub = 0;
-        products.forEach((item) => {
-            sub = (sub + (parseInt(item.value) * parseInt(item.amount)))
-        })
-        setSubTotal(sub)
-        setTotal(sub)
-    }
-
-    
-    useEffect(() => {
-        calculateValueAllProducts()  
-    }, [])
 
     return (
         <Layout titlePage="Carrinho" search searchMargin="0 1rem 0 0" back="color" cart="active" >
             <Cart>
                 <h1>Meu Carrinho</h1>
                 <div className="container-products">
-                    { products && products.map((item, index) => <CartItem key={index} value={item.value} amount={item.amount} />) }
+                    { allProducts && allProducts.map((product, index) => {
+                        return (
+                            <CartItem 
+                                key={index} 
+                                name={product.name}
+                                price={formatBRL(product.price)} 
+                                previousValue={formatBRL(product.previous)}
+                                amount={product.amount}
+                                addAmount={() => changeAmount(product.id, true)}
+                                subtractAmount={() => changeAmount(product.id, false)}
+                                format={() => formatBRL()}
+                            />
+                        )
+                        
+                    }) }
                 </div>
                 <div className={`insertCoupon ${classError}`}>
-                    <input type="text" placeholder={msgError ? msgError : "Insira um cupom"} onChange={e => setInputCoupon(e.target.value)} value={inputCoupon}/>
+                    <input 
+                        type="text" 
+                        placeholder={msgError ? msgError : "Insira um cupom"} onChange={e => setInputCoupon(e.target.value)} 
+                        value={inputCoupon}
+                    />
                     <button onClick={applyCoupon}>Aplicar Cupom</button>
                 </div>
                 {descCoupon && <div className="infoCoupon">
@@ -110,11 +114,7 @@ export default function indexCart() {
                 <div className="final-price">
                     <div className="sub">
                         <span>Sub-total dos Produtos</span>
-                        {subTotal ? (
-                            <span>{formatBRL(subTotal)}</span>
-                        ) : (
-                            <span>R$ 00,00</span>
-                        )}
+                        <span>{allProducts && formatBRL(allProducts.reduce((subTotal, product) => (subTotal += product.price * product.amount), 0))}</span>
                     </div>
                     <div className="coupon">
                         <span>Cupom</span>
@@ -129,7 +129,7 @@ export default function indexCart() {
                         {total ? (
                             <span>{formatBRL(total)}</span>
                         ) : (
-                            <span>R$ 00,00</span>
+                            <span>{formatBRL(allProducts.reduce((total, product) => (total += product.price * product.amount), 0))}</span>
                         )}
                     </div>
                 </div>

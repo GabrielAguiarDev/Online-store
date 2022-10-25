@@ -1,13 +1,8 @@
-import React, { useState } from "react";
-
 import { BiTrash } from "react-icons/bi";
 
 import { CardCart } from "./styles";
 
-export default function indexCart({ value, previousValue, amount }) {
-
-    const [newAmount, setNewAmount] = useState(parseInt(amount))
-
+export default function indexCart({ price, name, previousValue, amount, addAmount, subtractAmount}) {
     return (
         <CardCart>
             <BiTrash />
@@ -15,20 +10,15 @@ export default function indexCart({ value, previousValue, amount }) {
                 <h3>Produto</h3>
             </div>
             <div className="info">
-                <h2>Nome do produto</h2>
+                <h2>{name}</h2>
                 <div className="pricing">
-                    <span>R$ {value}</span>
-                    { previousValue && <span>R$ {previousValue}</span>}
+                    <span>{price}</span>
+                    { previousValue && <span>{previousValue}</span>}
                 </div>
                 <div className="amount">
-                    <button onClick={() => {
-                        setNewAmount(newAmount + 1)
-                    }}>+</button>
-                    <span>{newAmount}</span>
-                    <button onClick={() => {
-                        if (newAmount === 1) return
-                        setNewAmount(newAmount - 1)
-                    }}>-</button>
+                    <button onClick={addAmount}>+</button>
+                    <span>{amount}</span>
+                    <button onClick={subtractAmount}>-</button>
                 </div>
             </div>
         </CardCart>
