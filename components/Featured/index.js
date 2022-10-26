@@ -1,5 +1,5 @@
 import Title from "../TitleSection";
-import Card from "../CardItem";
+import Card from "../Card";
 
 import { Featured } from "./styles";
 
@@ -8,16 +8,16 @@ export default function index() {
         <Featured>
             <Title title="Produtos em Destaque" link="/featured" />
             <div className="container_featured">
-                <Card width="130px" />
-                <Card width="130px" />
-                <Card width="130px" />
-                <Card width="130px" />
-                <Card width="130px" />
-                <Card width="130px" />
-                <Card width="130px" />
-                <Card width="130px" />
-                <Card width="130px" />
-                <Card width="130px" />
+                <Card minWidth="130px" minHeight="200px" />
+                <Card minWidth="130px" minHeight="200px" />
+                <Card minWidth="130px" minHeight="200px" />
+                <Card minWidth="130px" minHeight="200px" />
+                <Card minWidth="130px" minHeight="200px" />
+                <Card minWidth="130px" minHeight="200px" />
+                <Card minWidth="130px" minHeight="200px" />
+                <Card minWidth="130px" minHeight="200px" />
+                <Card minWidth="130px" minHeight="200px" />
+                <Card minWidth="130px" minHeight="200px" />
             </div>
         </Featured>
     )

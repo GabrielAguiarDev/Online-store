@@ -1,7 +1,7 @@
 import Link from "next/link";
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 
-import { Layout, CartItem } from "../../components";
+import { Layout, Card } from "../../components";
 import { Cart } from "../../styles/cart";
 import { BsX } from "react-icons/bs";
 
@@ -13,22 +13,16 @@ export default function indexCart() {
         { id: 4, name: "Nome do produto", price: 150, amount: 1, total: 0},
         { id: 5, name: "Nome do produto", price: 330.50, previous: 399.99, amount: 1, total: 0},
         { id: 6, name: "Nome do produto", price: 190.30, amount: 1, total: 0},
-    ])
-    const [subTotal, setSubTotal] = useState(null)
-    const [total, setTotal] = useState(null)
-    const [descCoupon, setDescCoupon] = useState(null)
+    ]);
+    const [total, setTotal] = useState(null);
+    const [descCoupon, setDescCoupon] = useState(null);
     const [inputCoupon, setInputCoupon] = useState("");
-    const [classError, setClassError] = useState("")
-    const [msgError, setMsgError] = useState(null)
+    const [classError, setClassError] = useState("");
+    const [msgError, setMsgError] = useState(null);
     const coupon = {
         percentage: 25,
         key: "nextjs"
     };
-    
-    const formatBRL = (value) => {
-        if (value === undefined) return
-        return value.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})
-    }
 
     const changeAmount = useCallback(
         (id, add) => {
@@ -48,9 +42,8 @@ export default function indexCart() {
     );
 
     const applyCoupon = () => {
-        if (inputCoupon === coupon.key) {
+        if (inputCoupon.toLowerCase() === coupon.key) {
             let sub = allProducts.reduce((subTotal, product) => (subTotal += product.price * product.amount), 0)
-            console.log(sub)
             let discount = (coupon.percentage * sub) / 100
             let newValueTotal = (sub - discount)
             setTotal(newValueTotal)
@@ -78,15 +71,16 @@ export default function indexCart() {
                 <div className="container-products">
                     { allProducts && allProducts.map((product, index) => {
                         return (
-                            <CartItem 
+                            <Card
                                 key={index} 
+                                trash={true}
                                 name={product.name}
-                                price={formatBRL(product.price)} 
-                                previousValue={formatBRL(product.previous)}
+                                price={product.price} 
+                                previous={product.previous}
                                 amount={product.amount}
                                 addAmount={() => changeAmount(product.id, true)}
                                 subtractAmount={() => changeAmount(product.id, false)}
-                                format={() => formatBRL()}
+                                width="95%"
                             />
                         )
                         
