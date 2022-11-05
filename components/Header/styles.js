@@ -60,6 +60,20 @@ export const Header = styled.header`
             color: var(--color3);
         }
     }
+
+    .nav .edit {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--color1);
+        font-size: 30px;
+        margin-right: 1rem;
+
+        &:hover {
+            color: var(--color3);
+        }
+    }
 `;
 
 export const HeaderSecondary = styled.header`

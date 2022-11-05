@@ -36,7 +36,6 @@ export default function indexMenu() {
                 <h2 onClick={clickToClose}>Nome do site</h2>
                 <Link href="/profile">
                     <Profile>
-                    {/* <Image src="" alt="" /> */}
                     <div className="image">
                         <BsPersonFill />
                     </div>
