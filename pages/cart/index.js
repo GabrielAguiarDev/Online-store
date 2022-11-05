@@ -24,6 +24,11 @@ export default function indexCart() {
         key: "nextjs"
     };
 
+    const formatBRL = (value) => {
+        if (value === undefined) return
+        return value.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})
+    }
+
     const changeAmount = useCallback(
         (id, add) => {
             const newState = [...allProducts];
