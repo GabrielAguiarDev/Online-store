@@ -12,11 +12,9 @@ export default function indexHeader({ search, searchMargin, menu, back, backUrl,
     <>
       <Header back={back} >
         {back ? (
-          <Link href={backUrl ? backUrl : "/"}>
-            <a className="back">
-              <MdKeyboardArrowLeft />
-            </a>
-          </Link>
+          <a className="back" onClick={() => window.history.back()}>
+            <MdKeyboardArrowLeft />
+          </a>
         ) : (
           <div className="logo">
             <Link href="/">

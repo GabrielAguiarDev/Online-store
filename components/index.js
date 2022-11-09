@@ -13,4 +13,4 @@ import Language from "./Language";
 import Card from "./Card";
 import InfoProfile from "./Profile";
 
-export { Layout, Header, Navbar, Carrosel, Categories, Suggested, Promotion, Featured, Search, Menu, Overlay, Language, Card, InfoProfile };
+export { Layout, Header, Navbar, Carrosel, Categories, Suggested, Promotion, Featured, Search, Menu, Overlay, Language, Card, InfoProfile};

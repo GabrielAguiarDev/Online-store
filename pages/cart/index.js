@@ -70,7 +70,7 @@ export default function indexCart() {
     }
 
     return (
-        <Layout titlePage="Carrinho" search searchMargin="0 1rem 0 0" back="color" cart="active" >
+        <Layout titlePage="Carrinho" search searchMargin="0 1rem 0 0" back="color">
             <Cart>
                 <h1>Meu Carrinho</h1>
                 <div className="container-products">

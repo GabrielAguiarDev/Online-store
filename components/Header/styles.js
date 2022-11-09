@@ -67,7 +67,7 @@ export const Header = styled.header`
         justify-content: center;
         align-items: center;
         color: var(--color1);
-        font-size: 30px;
+        font-size: 25px;
         margin-right: 1rem;
 
         &:hover {
