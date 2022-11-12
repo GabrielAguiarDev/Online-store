@@ -5,6 +5,7 @@ export const Title = styled.div`
     align-items: center;
     justify-content: space-between;
     padding: 0 1rem;
+    margin: ${props => (props.margin ? props.margin : "")};
 
     h2 {
         font-size: 17px;

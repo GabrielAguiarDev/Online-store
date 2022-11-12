@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Card = styled.div`
     position: relative;
     display: flex;
+    flex-direction: ${props => (props.flexDirection ? "column" : "row")};
     justify-content: center;
     align-items: center;
     background-color: var(--color4);

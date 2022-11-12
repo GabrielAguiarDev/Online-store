@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { Card } from "./styles";
 
-import { BiTrash } from "react-icons/bi";
+import { BiTrash, BiHeart } from "react-icons/bi";
 
-export default function indexCard({width, minWidth, minHeight, photo, photoAlt, photoWidth, photoHeight, name, price, previous, status, purchaseDate, trash, amount, addAmount, subtractAmount, button, onClick }) {    
+export default function indexCard({width, minWidth, minHeight, flexDirection, photo, photoAlt, photoWidth, photoHeight, name, price, previous, status, purchaseDate, heart, trash, amount, addAmount, subtractAmount, button, onClick }) {    
 
     const formatBRL = (value) => {
         if (value === undefined) return
@@ -11,7 +11,8 @@ export default function indexCard({width, minWidth, minHeight, photo, photoAlt, 
     }
 
     return (
-        <Card width={width} minWidth={minWidth} minHeight={minHeight} >
+        <Card width={width} minWidth={minWidth} minHeight={minHeight} flexDirection={flexDirection} >
+            {heart && <BiHeart />}
             {trash && <BiTrash />}
             <div className="photoProduct">
                 <h3>{photo ? (

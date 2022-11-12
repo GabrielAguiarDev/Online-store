@@ -2,13 +2,13 @@ import Link from "next/link";
 
 import { Title } from "./styles";
 
-export default function index({ title, link }) {
+export default function index({ title, link, margin }) {
     return (
-        <Title>
+        <Title margin={margin}>
             <h2>{title}</h2>
-            <Link href={`${link}`}>
+            {link && <Link href={`${link}`}>
                 <a>Ver Mais</a>
-            </Link>
+            </Link>}
         </Title>
     )
 }

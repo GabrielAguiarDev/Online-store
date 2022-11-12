@@ -4,7 +4,7 @@ export default function Home() {
   return (
       <Layout titlePage="Inicio" search menu notification navbar home="active">
         <Carrosel />
-        <Categories />
+        <Categories title={true}/>
         <Suggested />
         <Promotion />
         <Featured />
