@@ -36,7 +36,7 @@ export default function indexCart() {
             if (add) {
                 item.amount += 1
             } else {
-                if (item.amount > 0) {
+                if (item.amount > 1) {
                     item.amount -= 1
                 }
             }
