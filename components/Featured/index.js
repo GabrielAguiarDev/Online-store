@@ -40,6 +40,10 @@ export default function index() {
                         price={product.price} 
                         buy={`${product.category}=${product.id}`}
                         previous={product.previous} minHeight="200px"
+                        maxWidth="163px"
+                        marginBottom="10px"
+                        photoWidth="147px"
+                        photoHeight="141px"
                         flexDirection={true} 
                 />)}
             </div>

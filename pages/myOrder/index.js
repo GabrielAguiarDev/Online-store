@@ -23,6 +23,7 @@ export default function MyOrder() {
                             previous={product.previous}
                             status={product.status} 
                             purchaseDate={product.purchaseDate}
+                            marginRight="10px"
                             width="95%"
                         />
                     ))}

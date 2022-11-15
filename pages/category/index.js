@@ -56,7 +56,11 @@ export default function indexCategories() {
                                     star={product.stars}
                                     name={product.name} price={product.price} 
                                     buy={`${product.category}=${product.id}`}
-                                    previous={product.previous} minHeight="200px" flexDirection={true} />
+                                    previous={product.previous} minHeight="200px" 
+                                    maxWidth="163px"
+                                    photoWidth="147px"
+                                    photoHeight="141px"
+                                    flexDirection={true} />
                             )
                         }
                     })}

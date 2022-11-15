@@ -27,6 +27,7 @@ export default function indexFavorites() {
                         price={product.price}
                         previous={product.previous}
                         width="95%"
+                        marginRight="10px"
                         button="Adicione ao carrinho"
                         onClick={() => console.log("adicionado ao carrinho")}
                     />)}

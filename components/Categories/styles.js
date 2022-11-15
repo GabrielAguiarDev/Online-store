@@ -19,12 +19,12 @@ export const Categories = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100%;
+        height: 90%;
+        width: 30%;
         font-size: 36px;
         color: var(--color3);
         border-radius: 10px;
         max-width: 105px;
-        min-width: 100px;
         background-color: var(--color4);
     }
 `;

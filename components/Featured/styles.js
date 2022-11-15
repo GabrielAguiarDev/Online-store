@@ -7,7 +7,6 @@ export const Featured = styled.section`
     .container_featured {
         display: flex;
         align-items: center;
-        justify-content: center;
         flex-wrap: nowrap;
         overflow-x: scroll;
         width: 95vw;

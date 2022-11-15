@@ -30,14 +30,21 @@ export default function index() {
 
     return (
         <Suggested>
-            <Title title="Itens Sugeridos" link={`/category`} />
+            <Title title="Itens Sugeridos" link={`/product`} />
             <div className="container_cards">
                 {CategoryAll.map((product) => <Card 
-                    key={product.id} heart={true} 
+                    key={product.id} 
+                    heart={true} 
                     star={product.stars}
-                    name={product.name} price={product.price} 
+                    name={product.name} 
+                    price={product.price} 
                     buy={`${product.category}=${product.id}`}
-                    previous={product.previous} minHeight="200px" flexDirection={true} 
+                    previous={product.previous} minHeight="200px" 
+                    maxWidth="163px"
+                    photoWidth="147px"
+                    photoHeight="141px"
+                    marginBottom="10px"
+                    flexDirection={true} 
                 />)}
             </div>
         </Suggested>

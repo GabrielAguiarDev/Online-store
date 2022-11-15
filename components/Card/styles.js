@@ -8,8 +8,8 @@ export const Card = styled.div`
     align-items: center;
     background-color: var(--color4);
     padding: 10px;
-    width: ${props => (props.width ? props.width : "0")};
-    min-width: ${props => (props.minWidth ? props.minWidth : "163px")};
+    width: ${props => (props.width ? props.width : "")};
+    max-width: ${props => (props.maxWidth ? props.maxWidth : "")};
     min-height: ${props => (props.minHeight ? props.minHeight : "95px")};
     border-radius: 8px;
 
@@ -38,12 +38,18 @@ export const Card = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-        min-height: 141px;
-        min-width: 147px;
-        margin-bottom: 10px;width: 130px;
-        height: 90px;
+        /* min-height: 141px;
+        min-width: 147px; */
+        margin-bottom: ${props => (props.marginBottom ? props.marginBottom : "")};
         background-color: var(--body);
         border-radius: 8px;
+
+        width: ${props => (props.photoWidth ? props.photoWidth : "")};
+        height: ${props => (props.photoHeight ? props.photoHeight : "")};
+
+        min-height: 100px;
+        min-width: 110px;
+        margin-right: ${props => (props.marginRight ? props.marginRight : "")};
     }
 
     .info {

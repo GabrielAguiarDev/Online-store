@@ -8,7 +8,7 @@ import { GoStar } from "react-icons/go"
 import { HiHeart } from "react-icons/hi";
 import { BsHandbagFill } from "react-icons/bs";
 
-export default function indexCard({width, minWidth, minHeight, flexDirection, photo, photoAlt, photoWidth, photoHeight, name, price, previous, status, buy, purchaseDate, heart, trash, star, amount, addAmount, subtractAmount, button, onClick }) {  
+export default function indexCard({width, maxWidth, minHeight, marginRight, marginBottom, flexDirection, photo, photoAlt, photoWidth, photoHeight, name, price, previous, status, buy, purchaseDate, heart, trash, star, amount, addAmount, subtractAmount, button, onClick }) {  
     
     const [Clickheart, setClickHeart] = useState(false)
 
@@ -18,7 +18,7 @@ export default function indexCard({width, minWidth, minHeight, flexDirection, ph
     }
 
     return (
-        <Card width={width} minWidth={minWidth} minHeight={minHeight} flexDirection={flexDirection} >
+        <Card width={width} maxWidth={maxWidth} minHeight={minHeight} flexDirection={flexDirection} photoHeight={photoHeight} photoWidth={photoWidth} marginRight={marginRight} marginBottom={marginBottom}>
             {heart && (Clickheart === true ? (
                 <HiHeart onClick={() => setClickHeart(false)} />
             ) : (
