@@ -1,11 +1,14 @@
 import React, { useState } from "react"; 
 import Image from "next/image";
+import Link from "next/link";
 import { Card } from "./styles";
 
-import { BiTrash, BiHeart, BiStar } from "react-icons/bi";
+import { BiTrash, BiHeart } from "react-icons/bi";
+import { GoStar } from "react-icons/go"
 import { HiHeart } from "react-icons/hi";
+import { BsHandbagFill } from "react-icons/bs";
 
-export default function indexCard({width, minWidth, minHeight, flexDirection, photo, photoAlt, photoWidth, photoHeight, name, price, previous, status, purchaseDate, heart, trash, star, amount, addAmount, subtractAmount, button, onClick }) {  
+export default function indexCard({width, minWidth, minHeight, flexDirection, photo, photoAlt, photoWidth, photoHeight, name, price, previous, status, buy, purchaseDate, heart, trash, star, amount, addAmount, subtractAmount, button, onClick }) {  
     
     const [Clickheart, setClickHeart] = useState(false)
 
@@ -13,12 +16,6 @@ export default function indexCard({width, minWidth, minHeight, flexDirection, ph
         if (value === undefined) return
         return value.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})
     }
-
-    // const verifyStars = () => {
-    //     for (let n = star; n <= 5; n++) {
-    //         return <BiStar />
-    //     }
-    // }
 
     return (
         <Card width={width} minWidth={minWidth} minHeight={minHeight} flexDirection={flexDirection} >
@@ -48,7 +45,12 @@ export default function indexCard({width, minWidth, minHeight, flexDirection, ph
                     <button onClick={subtractAmount}>-</button>
                 </div>}
                 {button && <button className="button" onClick={onClick}>{button}</button>}
-                {/* {star && <span>{verifyStars}</span>} */}
+                {star && <div className="info_bottom">
+                    {star && <span className="star"><GoStar /> ({star})</span>}
+                    {buy && <Link href={`/category/product/${buy}`}>
+                        <a className="buy"><BsHandbagFill /></a>
+                    </Link>}
+                </div>}
             </div>}
         </Card>
     )

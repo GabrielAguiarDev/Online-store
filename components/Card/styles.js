@@ -116,6 +116,55 @@ export const Card = styled.div`
         font-weight: bold;
     }
 
+    .info .info_bottom {
+        display: flex;
+        position: relative;
+        justify-content: space-between;
+    }
+
+    .info .info_bottom .star {
+        position: relative;
+        display: flex;
+        align-items: baseline;
+        color: var(--text2);
+    }
+
+    .info .info_bottom .star svg {
+        position: relative;
+        left: 0;
+        top: 6px;
+        bottom: 0;
+        right: 0;
+        width: 24px;
+        height: 30px;
+        padding: 0;
+        display: inline-block;
+        box-shadow: none;
+        color: #eded00;
+    }
+
+    .info .info_bottom .buy {
+        position: relative;
+        top: 6px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 60px;
+        height: 32px;
+    }
+
+    .info .info_bottom .buy svg {
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: var(--color0);
+        color: var(--nav);
+        width: 60px;
+        height: 31px;
+        border-radius: 11px;
+    }
+
     .Delivered {
         color: var(--color6);
     }

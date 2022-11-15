@@ -6,7 +6,7 @@ import { AllCategories } from "../../styles/category";
 
 export default function indexCategories() {
 
-    const [CategorySelected, setCategorySelected] = useState(2);
+    const [CategorySelected, setCategorySelected] = useState(1);
 
     const [CategoryAll, setCategoryAll] = useState([
         { id: 1, name: "Nome do produto 01", price: 420, previous: 499.99, category: 1, stars: 5},
@@ -55,6 +55,7 @@ export default function indexCategories() {
                                     key={product.id} heart={true} 
                                     star={product.stars}
                                     name={product.name} price={product.price} 
+                                    buy={`${product.category}=${product.id}`}
                                     previous={product.previous} minHeight="200px" flexDirection={true} />
                             )
                         }
