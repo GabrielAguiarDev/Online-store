@@ -9,18 +9,23 @@ export const Card = styled.div`
     background-color: var(--color4);
     padding: 10px;
     width: ${props => (props.width ? props.width : "0")};
-    min-width: ${props => (props.minWidth ? props.minWidth : "150px")};
+    min-width: ${props => (props.minWidth ? props.minWidth : "163px")};
     min-height: ${props => (props.minHeight ? props.minHeight : "95px")};
     border-radius: 8px;
 
     svg {
         position: absolute;
-        right: 5px;
-        top: 5px;
+        top: -8px;
+        right: -6px;
+        box-shadow: 3px 3px 3px #00000026;
+        background-color: var(--color4);
+        border-radius: 50%;
+        height: 35px;
+        width: 34px;
         font-size: 32px;
         color: var(--color8);
         padding: 4px;
-    }
+    } 
 
     h3 {
         transform: rotate(-45deg);
@@ -33,7 +38,9 @@ export const Card = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 130px;
+        min-height: 141px;
+        min-width: 147px;
+        margin-bottom: 10px;width: 130px;
         height: 90px;
         background-color: var(--body);
         border-radius: 8px;
@@ -44,16 +51,15 @@ export const Card = styled.div`
         flex-direction: column;
         width: 100%;
         gap: 15px;
-        padding-left: 15px;
     }
 
     .info h2 {
-        font-size: 17px;
+        font-size: 15px;
     }
 
     .info .pricing {
         display: flex;
-        gap: 15px;
+        gap: 9px;
     }
 
     .info .pricing span {
@@ -63,7 +69,7 @@ export const Card = styled.div`
     }
 
     .info .pricing span:nth-child(2) {
-        font-size: 16px;
+        font-size: 13px;
         color: var(--color7);
         text-decoration: line-through;
         font-style: italic;
@@ -159,7 +165,7 @@ export const Card = styled.div`
         left: 0;
         right: 0;
         background-color: var(--color0);
-        color: var(--nav);
+        color: var(--color2);
         width: 60px;
         height: 31px;
         border-radius: 11px;

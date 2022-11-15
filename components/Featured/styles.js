@@ -5,12 +5,16 @@ export const Featured = styled.section`
     margin-bottom: 6rem;
 
     .container_featured {
-        margin: 2rem 10px 0 10px;
-        padding: 0 10px;
         display: flex;
+        align-items: center;
+        justify-content: center;
         flex-wrap: nowrap;
         overflow-x: scroll;
-        gap: 1rem;
+        width: 95vw;
+        margin: 0 auto;
+        gap: 12px;
+        padding: 1rem 10px;
+        margin: 1rem 10px 0 10px;
     }
      
 `; 
