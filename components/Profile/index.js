@@ -8,6 +8,7 @@ import { MdEmail } from "react-icons/md";
 import { ImLocation } from "react-icons/im";
 
 export default function indexProfile({ user }) {
+  console.log(user)
   return (
     <InfoProfile>
       {user.image ? (
@@ -33,7 +34,7 @@ export default function indexProfile({ user }) {
           </div>
           <h3>{user.name}</h3>
         <div className="wallet">
-            {user.wallet.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}
+            {Number(user.wallet).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}
             <span>Minha carteira</span>
         </div>
         </div>

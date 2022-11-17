@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import React, { useState } from "react";
+import { useState } from "react";
+import { useAuth } from "../../providers/auth";
 
 import { MdSettings, MdMenu } from "react-icons/md";
 import { FaSignOutAlt } from "react-icons/fa";
@@ -14,6 +15,7 @@ import { Button, Menu, Profile, Links } from "./styles";
 
 export default function indexMenu() {
 
+    const { setUser } = useAuth();
     const [menu, setMenu] = useState(null);
 
     const clickToClose = () => {
@@ -24,6 +26,11 @@ export default function indexMenu() {
 
     const handleMenu = () => {
       setMenu(true)
+    }
+
+    const handleLogout = () => {
+        setUser(undefined)
+        localStorage.removeItem("dateUser")
     }
 
     return (
@@ -61,7 +68,7 @@ export default function indexMenu() {
                         </Link>
                     </li>
                     <li>
-                        <Link href="favorites">
+                        <Link href="/favorites">
                             <a>
                                 <BsHeartFill />
                                 <span>Favoritos</span>
@@ -69,7 +76,7 @@ export default function indexMenu() {
                         </Link>
                     </li>
                     <li>
-                        <Link href="cart">
+                        <Link href="/cart">
                             <a>
                                 <BsCartFill />
                                 <span>Carrinho</span>
@@ -77,7 +84,7 @@ export default function indexMenu() {
                         </Link>
                     </li>
                     <li>
-                        <Link href="settings">
+                        <Link href="/settings">
                             <a>
                                 <MdSettings />
                                 <span>Configurações</span>
@@ -85,7 +92,7 @@ export default function indexMenu() {
                         </Link>
                     </li>
                     <li>
-                        <Link href="about">
+                        <Link href="/about">
                             <a>
                                 <FcAbout />
                                 <span>Sobre</span>
@@ -93,8 +100,8 @@ export default function indexMenu() {
                         </Link>
                     </li>
                     <li>
-                        <Link href="signOut">
-                            <a>
+                        <Link href="/login">
+                            <a onClick={handleLogout}>
                                 <FaSignOutAlt />
                                 <span>Sair</span>
                             </a>

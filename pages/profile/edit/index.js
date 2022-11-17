@@ -1,5 +1,6 @@
-import React, { useState, useCallback } from "react"
+import React, { useState } from "react"
 import { Layout } from "../../../components";
+import { useAuth } from "../../../providers/auth";
 
 import { BiCamera } from "react-icons/bi";
 import { BsPersonFill } from "react-icons/bs"
@@ -7,6 +8,9 @@ import { BsPersonFill } from "react-icons/bs"
 import { ProfileEdit, Button } from "../../../styles/profile/edit"
 
 export default function indexEdit() {
+
+    const { user, setUser } = useAuth();
+  console.log(user);
 
     // Dados que viram do banco de dados
     const [dataUser, setDataUser] = useState([
@@ -34,8 +38,8 @@ export default function indexEdit() {
                         type="text" 
                         name="name" 
                         placeholder="Seu nome" 
-                        onChange={e => setChangeName(e.target.value)}
-                        value={changeName}
+                        onChange={e => setUser({ name: e.target.value})}
+                        value={user.name}
                     />
                     <input 
                         type="text" 
