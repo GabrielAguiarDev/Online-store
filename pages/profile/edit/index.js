@@ -38,8 +38,8 @@ export default function indexEdit() {
                         type="text" 
                         name="name" 
                         placeholder="Seu nome" 
-                        onChange={e => setUser({ name: e.target.value})}
-                        value={user.name}
+                        onChange={e => setChangeName(e.target.value)}
+                        value={changeName}
                     />
                     <input 
                         type="text" 
