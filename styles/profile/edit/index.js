@@ -65,7 +65,7 @@ export const ProfileEdit = styled.section`
 export const Button = styled.button`
     font-size: 19px;
     font-weight: bold;
-    background-color: ${props => (props.change ? "var(--color1)" : "var(--color4)")};
+    background-color: var(--color1);
     color: var(--text);
     border-radius: 25px;
     border: none;

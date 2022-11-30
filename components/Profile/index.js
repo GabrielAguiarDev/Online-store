@@ -8,7 +8,6 @@ import { MdEmail } from "react-icons/md";
 import { ImLocation } from "react-icons/im";
 
 export default function indexProfile({ user }) {
-  console.log(user)
   return (
     <InfoProfile>
       {user.image ? (

@@ -2,19 +2,22 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../../providers/auth";
 
+import { useSelector } from "react-redux";
+import { selectUser } from "../../redux/userSlice";
+
 import { Layout, InfoProfile } from "../../components";
 
 import { Profile } from "../../styles/profile";
 
 export default function indexProfile() {
 
-    const { user } = useAuth();
+    const data = useSelector(selectUser)
 
     const [dataUser, setDataUser] = useState(undefined)
 
     useEffect(() => {
-        if(user) {
-            setDataUser([user])
+        if(data.isLogged === true) {
+            setDataUser([data])
         }
     }, [])
 

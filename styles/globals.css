@@ -62,3 +62,12 @@ body {
     transform: rotate(0deg);
   }
 }
+
+@keyframes msgError {
+  from {
+    width: 0;
+  }
+  to {
+    width: 15rem;
+  }
+}

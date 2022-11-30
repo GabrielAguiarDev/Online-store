@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import Link from "next/link";
 
+import { StyleRegister } from "../../styles/register";
+
+import { InputForm, ButtonForm } from "../../components";
+
 export default function indexRegister() {
 
     const [name, setName] = useState("")
@@ -29,79 +33,65 @@ export default function indexRegister() {
     
 
     return (
-        <>
-            <h1>Crie sua conta</h1>
+        <StyleRegister>
             <form onSubmit={handleRegister}>
-                <label>
-                    Primeiro Nome 
-                    <input 
-                        type="text" 
-                        onChange={e => setName(e.target.value)} 
-                        value={name}
-                    />
-                </label>
-                <br/>
-                <label>
-                    Nome de usuário
-                    <input 
-                        type="text"
-                        onChange={e => setUsername(e.target.value)}
-                        value={username}
-                    />
-                </label>
-                <br/>
-                <label>
-                    Seu Email
-                    <input 
-                        type="text"
-                        onChange={e => setEmail(e.target.value)}
-                        value={email}
-                    />
-                </label>
-                <br/>
-                <label>
-                    Senha
-                    <input 
-                        type="password"
-                        onChange={e => setPassword(e.target.value)}
-                        value={password}
-                    />
-                </label>
-                <br/>
-                <label>
-                    Cep
-                    <input 
-                        type="text" 
-                        onChange={e => setCep(e.target.value)}
-                        value={cep}
-                    />
-                </label>
-                <br/>
-                <label>
-                    Número de telefone
-                    <input 
-                        type="text"
-                        onChange={e => setPhone(e.target.value)}
-                        value={phone}
-                    />
-                </label>
-                <br/>
-                <label>
-                    Dinheiro depositado
-                    <input 
-                        type="text"
-                        onChange={e => setWallet(e.target.value)}
-                        value={wallet}
-                    />
-                </label>
-                <br/>
-                <button>Criar conta</button>
+                <h1>Crie sua conta</h1>
+                <InputForm
+                    titulo={"Primeiro Nome"}
+                    type={"text"}
+                    placeholder={"username"}
+                    onChange={e => setName(e.target.value)}
+                    value={name}
+                />
+                <InputForm
+                    titulo={"Nome de usuário"}
+                    type={"text"}
+                    placeholder={"username"}
+                    onChange={e => setUsername(e.target.value)}
+                    value={username}
+                />
+                <InputForm
+                    titulo={"Seu Email"}
+                    type={"email"}
+                    placeholder={"exemplo@gmail.com"}
+                    onChange={e => setEmail(e.target.value)}
+                    value={email}
+                />
+                <InputForm
+                    titulo={"Senha"}
+                    type={"password"}
+                    placeholder={"password"}
+                    onChange={e => setPassword(e.target.value)}
+                    value={password}
+                />
+                <InputForm
+                    titulo={"Cep"}
+                    type={"text"}
+                    placeholder={"45807-000"}
+                    onChange={e => setCep(e.target.value)}
+                    value={cep}
+                />
+                <InputForm
+                    titulo={"Número de Telefone"}
+                    type={"text"}
+                    placeholder={"+55 73 9 9848-6884"}
+                    onChange={e => setPhone(e.target.value)}
+                    value={phone}
+                />
+                <InputForm
+                    titulo={"Dinheiro Depositado"}
+                    type={"number"}
+                    placeholder={"250.5"}
+                    onChange={e => setWallet(e.target.value)}
+                    value={wallet}
+                />
+                <ButtonForm text={"Criar conta"} />
             </form>
-            <br/>
-            <br/>
-            <Link href="/login">
-                <button>Ir para a página de Login</button>
-            </Link>
-        </>
+            <div className="link">
+                <Link href="/login">
+                    <button>Ir para a página de Login</button>
+                </Link>
+            </div>
+        </StyleRegister>
     )
 }

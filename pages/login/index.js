@@ -1,66 +1,73 @@
 import Link from "next/link";
-import { useState } from "react"
-import { useAuth } from "../../providers/auth";
+import React, { useState, useEffect } from "react";
+
+import { InputForm, ButtonForm } from "../../components";
+
+import { StyleLogin } from "../../styles/login";
+
+import { useDispatch } from "react-redux";
+import { changeUser } from "../../redux/userSlice";
 
 export default function indexLogin() {
 
-    const { setUser } = useAuth();
+    const dispatch = useDispatch();
 
     const [inputUsername, setInputUsername] = useState("");
     const [inputPassword, setInputPassword] = useState("");
+    const [viewHeight, setViewHeight] = useState(undefined)
+    const [viewWidth, setViewWidth] = useState(undefined)
 
-    const [msg, setMsg] = useState("")
+    const [msg, setMsg] = useState({})
 
     const handleLogin = (e) => {
         e.preventDefault()
         const dataUser = JSON.parse(localStorage.getItem("dataUser"))
 
         if(inputPassword === dataUser.password && inputUsername  === dataUser.username) {
-            setMsg("Usuário logou")
-            setUser(dataUser)
+            setMsg({type: "success", text: "Usuário logou"})
+            dispatch(changeUser(dataUser))
             
         } else {
-            setMsg("usuário ou senha inválida")
+            setMsg({type: "error", text: "usuário ou senha inválida!"})
         }
     }
 
+    useEffect(() => {
+        setViewHeight(window.innerHeight)
+        setViewWidth(window.innerWidth)
+    }, [])
+
     return (
-        <>
-            <h1>Faça Login</h1>
+        <StyleLogin height={viewHeight} width={viewWidth}>
             <form onSubmit={handleLogin}>
-                <label>
-                    Nome de usuario
-                    <input 
-                        type="text" placeholder="username"
-                        onChange={e => setInputUsername(e.target.value)} 
-                        value={inputUsername}
-                    />
-                </label>
-                <br/>
-                <label>
-                    Senha
-                    <input 
-                        type="password" placeholder="password"
-                        onChange={e => setInputPassword(e.target.value)} 
-                        value={inputPassword}
-                    />
-                </label>
-                <br/>
-                <button>Entrar</button>
+                <h1>Faça Login</h1>
+                <InputForm
+                    titulo={"Nome de usuário"}
+                    type={"text"}
+                    placeholder={"username"}
+                    onChange={e => setInputUsername(e.target.value)}
+                    value={inputUsername}
+                />
+                <InputForm
+                    titulo={"Senha"}
+                    type={"password"}
+                    placeholder={"password"}
+                    onChange={e => setInputPassword(e.target.value)}
+                    value={inputPassword}
+                />
+                <ButtonForm text={"Entrar"} />
             </form>
-            <br/>
-            <br/>
-            {msg && msg}
-            <br/>
-            <br/>
-            <Link href="/register">
-                <button>Ir para página de registro</button>
-            </Link>
-            <br/>
-            <br/>
-            <Link href="/">
-                <button>Ir para Home</button>
-            </Link>
-        </>
+            {msg.type &&
+                <div className={`msg ${msg.type}`} onClick={() => setMsg({})}>{msg.text}</div>}
+            <div className="links">
+                <Link href="/register">
+                    <button>Ir para página de registro</button>
+                </Link>
+                <Link href="/">
+                    <button>Ir para Página inicial</button>
+                </Link>
+            </div>
+            
+        </StyleLogin>
     )
 }

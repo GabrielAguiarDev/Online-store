@@ -14,5 +14,8 @@ import Card from "./Card";
 import InfoProfile from "./Profile";
 import Title from "./TitleSection";
 import MsgNotification from "./MsgNotification";
+import ButtonForm from "./form/button";
+import InputForm from  "./form/input";
+import ButtonLogout from "./Logout";
 
-export { Layout, Header, Navbar, Carrosel, Categories, Suggested, Promotion, Featured, Search, Menu, Overlay, Language, Card, InfoProfile, Title, MsgNotification};
+export { Layout, Header, Navbar, Carrosel, Categories, Suggested, Promotion, Featured, Search, Menu, Overlay, Language, Card, InfoProfile, Title, MsgNotification, ButtonForm, InputForm, ButtonLogout};

@@ -1,6 +1,8 @@
 import React, { useState } from "react"
 import { Layout } from "../../../components";
-import { useAuth } from "../../../providers/auth";
+
+import { useDispatch, useSelector } from "react-redux";
+import { changeUser, selectUser } from "../../../redux/userSlice";
 
 import { BiCamera } from "react-icons/bi";
 import { BsPersonFill } from "react-icons/bs"
@@ -9,20 +11,37 @@ import { ProfileEdit, Button } from "../../../styles/profile/edit"
 
 export default function indexEdit() {
 
-    const { user, setUser } = useAuth();
-  console.log(user);
+    const dispatch = useDispatch();
+    const dataUser = useSelector(selectUser)
 
-    // Dados que viram do banco de dados
-    const [dataUser, setDataUser] = useState([
-        { name: "Nome do usuário", image: null, wallet: 458.50, username: "@name", phone: "+55 73 9 8765-4321", email: "info@exemple.com", address: "653 Southern Street, California, USA" }
-    ]);
+    const [changeName, setChangeName] = useState(dataUser.name);
+    const [changeUserName, setChangeUserName] = useState(dataUser.username);
+    const [changePassword, setChangePassword] = useState("");
+    const [changeEmail, setChangeEmail] = useState(dataUser.email);
+    const [changeAddress, setChangeAddress] = useState(dataUser.address);
+    const [changePhone, setChangePhone] = useState(dataUser.phone);
 
-    const [changeName, setChangeName] = useState(dataUser[0].name);
-    const [changeUserName, setChangeUserName] = useState(dataUser[0].username);
-    const [changeEmail, setChangeEmail] = useState(dataUser[0].email);
-    const [changeAddress, setChangeAddress] = useState(dataUser[0].address);
-    const [changePhone, setChangePhone] = useState(dataUser[0].phone);
-    const [verifyChange, setVerifyChange] = useState(true);
+    const handleEditProfile = () => {
+        dispatch(changeUser({
+            name: changeName,
+            username: changeUserName,
+            email: changeEmail,
+            address: changeAddress,
+            phone: changePhone,
+            wallet: dataUser.wallet
+        }))
+        const dataLocalStorage = {
+            name: changeName,
+            username: changeUserName,
+            password: changePassword,
+            email: changeEmail,
+            address: changeAddress,
+            phone: changePhone,
+            wallet: dataUser.wallet,
+            image: null,
+        }
+        localStorage.setItem("dataUser", JSON.stringify(dataLocalStorage))
+    }
 
     return (
         <Layout titlePage="Editar Dados" back menu navbar>
@@ -50,6 +69,13 @@ export default function indexEdit() {
                     />
                     <input 
                         type="text" 
+                        name="password" 
+                        placeholder="password" 
+                        onChange={e => setChangePassword(e.target.value)}
+                        value={changePassword}
+                    />
+                    <input 
+                        type="text" 
                         name="email" 
                         placeholder="info@exemple.com" 
                         onChange={e => setChangeEmail(e.target.value)}
@@ -70,7 +96,7 @@ export default function indexEdit() {
                         value={changePhone}
                     />
                 </div>
-                <Button change={verifyChange}>Salvar alterações</Button>
+                <Button onClick={handleEditProfile}>Salvar alterações</Button>
                 
             </ProfileEdit>
         </Layout>
